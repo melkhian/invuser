@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'usuteleofic')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        $consulta = Tipos::find()->asArray()->where('tipoid_fk = 1')->all();
+        $consulta = Tipos::find()->asArray()->where('tiposid_fk = 1')->all();
         $listado=ArrayHelper::map($consulta,'tiposid','tiposdesc');
         echo $form->field($model,"tiposid_fk_1")->dropDownList($listado,['prompt'=> 'Seleccione el Cargo']);
     ?>
@@ -38,7 +38,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'usucorr')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        $consulta = Tipos::find()->asArray()->where('tipoid_fk = 2')->all();
+        $consulta = Tipos::find()->asArray()->where('tiposid_fk = 2')->all();
         $listado=ArrayHelper::map($consulta,'tiposid','tiposdesc');
         echo $form->field($model,"tiposid_fk_2")->dropDownList($listado,['prompt'=> 'Seleccione el Estado']);
     ?>
