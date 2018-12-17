@@ -15,18 +15,6 @@ $config = [
     ],
     'components' => [
 
-        /*INICIO
-        Agrego el Componente Admin LTE*/
-         'view' => [
-                 'theme' => [
-                     'pathMap' => [
-                        '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
-                     ],
-                 ],
-            ],
-
-        /*FIN*/
-
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ValidarCookies****',
