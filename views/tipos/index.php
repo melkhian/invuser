@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Tipo;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TiposSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'tiposid',
-            'tipoid_fk',
+            [   'header' => 'Tipo',
+                'headerOptions' => ['style' => 'color:#337ab7'],
+                'value'=> function($model){
+                    return $model->Tipo();
+                },
+                 'filter'=>
+                Html::activeDropDownList($searchModel, 'tipoid_fk', ArrayHelper::map(Tipo::find()->all(),'tipoid','tipodesc'),
+                [ 'prompt'=>'Seleccione Tipo',])
+            ],
             'tiposdesc',
             'tiposvalor',
 

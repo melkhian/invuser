@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\IntecomaSearch */
+/* @var $searchModel app\models\UsuarolSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Intecomas');
+$this->title = Yii::t('app', 'Usuarols');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="intecoma-index">
+<div class="usuarol-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Intecoma'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Usuarol'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,11 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'intecomaid',
-            'inteid_fk',
-            'comaid_fk',
-            'intecomafunc',
-            'intecomadesc',
+            'usuarolid',
+            'usuaid_fk',
+            'rolid_fk',
+            'vence',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

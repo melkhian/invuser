@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Tipos;
-use app\models\Roles;
 use app\models\Dependencias;
 use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
 /* @var $form yii\widgets\ActiveForm */
@@ -29,33 +29,15 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'usuteleofic')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-        $consulta = Tipos::find()->asArray()->where('tiposid_fk = 1')->all();
-        $listado=ArrayHelper::map($consulta,'tiposid','tiposdesc');
-        echo $form->field($model,"tiposid_fk_1")->dropDownList($listado,['prompt'=> 'Seleccione el Cargo']);
-    ?>
+    <?= $form->field($model, 'tiposid_fk_1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'tiposid','tiposdesc'), ['prompt'=> 'Seleccione el Cargo']) ?>
 
     <?= $form->field($model, 'usucorr')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-        $consulta = Tipos::find()->asArray()->where('tiposid_fk = 2')->all();
-        $listado=ArrayHelper::map($consulta,'tiposid','tiposdesc');
-        echo $form->field($model,"tiposid_fk_2")->dropDownList($listado,['prompt'=> 'Seleccione el Estado']);
-    ?>
+    <?= $form->field($model, 'tiposid_fk_2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'tiposid','tiposdesc'), ['prompt'=> 'Seleccione el Estado']) ?>
 
     <?= $form->field($model, 'usucont')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-        $consulta = Dependencias::find()->asArray()->all();
-        $listado=ArrayHelper::map($consulta,'depid','depnomb');
-        echo $form->field($model,"depid_fk")->dropDownList($listado,['prompt'=> 'Seleccione una Dependencia']);
-    ?>
-
-    <?php 
-        $consulta = Roles::find()->asArray()->all();
-        $listado=ArrayHelper::map($consulta,'rolid','rolnomb');
-        echo $form->field($model,"rolid_fk")->dropDownList($listado,['prompt'=> 'Seleccione un Rol']);
-    ?>
+    <?= $form->field($model, 'depid_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'depid','depnomb'), ['prompt'=> 'Seleccione la Dependencia']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

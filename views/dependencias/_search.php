@@ -24,13 +24,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'depenca') ?>
 
-    <?= $form->field($model, 'depcargenca') ?>
+    <?= $form->field($model, 'tiposid_fk_1') ?>
 
     <?= $form->field($model, 'depteleenca') ?>
 
     <?php // echo $form->field($model, 'depdireenca') ?>
 
-    <?php // echo $form->field($model, 'tiposid_fk') ?>
+    <?php // echo $form->field($model, 'tiposid_fk_2') ?>
 
     <?php // echo $form->field($model, 'depcorrenca') ?>
 

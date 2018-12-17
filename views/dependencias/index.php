@@ -29,10 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'depid',
             'depnomb',
             'depenca',
-            'depcargenca',
+            'tiposid_fk_1',
             'depteleenca',
             //'depdireenca',
-            //'tiposid_fk',
+            //'tiposid_fk_2',
             //'depcorrenca',
 
             ['class' => 'yii\grid\ActionColumn'],

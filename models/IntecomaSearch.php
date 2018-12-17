@@ -19,6 +19,7 @@ class IntecomaSearch extends Intecoma
     {
         return [
             [['intecomaid', 'inteid_fk', 'comaid_fk'], 'integer'],
+            [['intecomafunc', 'intecomadesc'], 'safe'],
         ];
     }
 
@@ -62,6 +63,9 @@ class IntecomaSearch extends Intecoma
             'inteid_fk' => $this->inteid_fk,
             'comaid_fk' => $this->comaid_fk,
         ]);
+
+        $query->andFilterWhere(['like', 'intecomafunc', $this->intecomafunc])
+            ->andFilterWhere(['like', 'intecomadesc', $this->intecomadesc]);
 
         return $dataProvider;
     }

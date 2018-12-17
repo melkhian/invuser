@@ -17,15 +17,14 @@ use Yii;
  * @property string $usuteleofic Teléfono Oficina
  * @property int $tiposid_fk_1 Cargo de Usuario
  * @property string $usucorr Correo Electrónico
- * @property int $tiposid_fk_2 Estado Habilitado
+ * @property int $tiposid_fk_2 Estado
  * @property string $usucont Contraseña
  * @property int $depid_fk Dependencia del Usuario
- * @property int $rolid_fk Rol de Usuario
  *
  * @property Dependencias $depidFk
  * @property Tipos $tiposidFk1
  * @property Tipos $tiposidFk2
- * @property Roles $rolidFk
+ * @property Usuarol[] $usuarols
  */
 class Usuarios extends \yii\db\ActiveRecord
 {
@@ -43,15 +42,14 @@ class Usuarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'usuteleofic', 'tiposid_fk_1', 'usucorr', 'tiposid_fk_2', 'usucont', 'depid_fk', 'rolid_fk'], 'required'],
-            [['tiposid_fk_1', 'tiposid_fk_2', 'depid_fk', 'rolid_fk'], 'integer'],
+            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'usuteleofic', 'tiposid_fk_1', 'usucorr', 'tiposid_fk_2', 'usucont', 'depid_fk'], 'required'],
+            [['tiposid_fk_1', 'tiposid_fk_2', 'depid_fk'], 'integer'],
             [['usuiden', 'usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usucorr'], 'string', 'max' => 30],
             [['usucont'], 'string', 'max' => 200],
             [['depid_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Dependencias::className(), 'targetAttribute' => ['depid_fk' => 'depid']],
             [['tiposid_fk_1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['tiposid_fk_1' => 'tiposid']],
             [['tiposid_fk_2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['tiposid_fk_2' => 'tiposid']],
-            [['rolid_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rolid_fk' => 'rolid']],
         ];
     }
 
@@ -74,7 +72,6 @@ class Usuarios extends \yii\db\ActiveRecord
             'tiposid_fk_2' => Yii::t('app', 'Estado'),
             'usucont' => Yii::t('app', 'Contraseña'),
             'depid_fk' => Yii::t('app', 'Dependencia del Usuario'),
-            'rolid_fk' => Yii::t('app', 'Rol de Usuario'),
         ];
     }
 
@@ -105,8 +102,8 @@ class Usuarios extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRolidFk()
+    public function getUsuarols()
     {
-        return $this->hasOne(Roles::className(), ['rolid' => 'rolid_fk']);
+        return $this->hasMany(Usuarol::className(), ['usuaid_fk' => 'usuid']);
     }
 }

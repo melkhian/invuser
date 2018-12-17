@@ -18,17 +18,13 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'depenca')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'depcargenca')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tiposid_fk_1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'tiposid','tiposdesc'), ['prompt'=> 'Seleccione el Cargo']) ?>
 
     <?= $form->field($model, 'depteleenca')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'depdireenca')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-        $consulta = Tipos::find()->asArray()->where('tipoid_fk = 3')->all();
-        $listado=ArrayHelper::map($consulta,'tiposid','tiposdesc');
-        echo $form->field($model,"tiposid_fk")->dropDownList($listado,['prompt'=> 'Seleccione el Cargo']);
-    ?>    
+    <?= $form->field($model, 'tiposid_fk_2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'tiposid','tiposdesc'), ['prompt'=> 'Seleccione la Dependencia']) ?>
 
     <?= $form->field($model, 'depcorrenca')->textInput(['maxlength' => true]) ?>
 

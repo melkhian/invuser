@@ -10,6 +10,8 @@ use Yii;
  * @property int $intecomaid
  * @property int $inteid_fk Interfaz
  * @property int $comaid_fk Comando
+ * @property string $intecomafunc Funcionalidad
+ * @property string $intecomadesc Descripción
  *
  * @property Comandos $comaidFk
  * @property Interfaces $inteidFk
@@ -31,8 +33,10 @@ class Intecoma extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['inteid_fk', 'comaid_fk'], 'required'],
+            [['inteid_fk', 'comaid_fk', 'intecomafunc', 'intecomadesc'], 'required'],
             [['inteid_fk', 'comaid_fk'], 'integer'],
+            [['intecomafunc'], 'string', 'max' => 50],
+            [['intecomadesc'], 'string', 'max' => 200],
             [['comaid_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Comandos::className(), 'targetAttribute' => ['comaid_fk' => 'comaid']],
             [['inteid_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Interfaces::className(), 'targetAttribute' => ['inteid_fk' => 'inteid']],
         ];
@@ -47,6 +51,8 @@ class Intecoma extends \yii\db\ActiveRecord
             'intecomaid' => Yii::t('app', 'Intecomaid'),
             'inteid_fk' => Yii::t('app', 'Interfaz'),
             'comaid_fk' => Yii::t('app', 'Comando'),
+            'intecomafunc' => Yii::t('app', 'Funcionalidad'),
+            'intecomadesc' => Yii::t('app', 'Descripción'),
         ];
     }
 

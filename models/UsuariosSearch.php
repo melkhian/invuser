@@ -18,7 +18,7 @@ class UsuariosSearch extends Usuarios
     public function rules()
     {
         return [
-            [['usuid', 'tiposid_fk_1', 'tiposid_fk_2', 'depid_fk', 'rolid_fk'], 'integer'],
+            [['usuid', 'tiposid_fk_1', 'tiposid_fk_2', 'depid_fk'], 'integer'],
             [['usuiden', 'usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel', 'usutelepers', 'usuteleofic', 'usucorr', 'usucont'], 'safe'],
         ];
     }
@@ -63,7 +63,6 @@ class UsuariosSearch extends Usuarios
             'tiposid_fk_1' => $this->tiposid_fk_1,
             'tiposid_fk_2' => $this->tiposid_fk_2,
             'depid_fk' => $this->depid_fk,
-            'rolid_fk' => $this->rolid_fk,
         ]);
 
         $query->andFilterWhere(['like', 'usuiden', $this->usuiden])

@@ -39,7 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //'tiposid_fk_2',
             //'usucont',
             //'depid_fk',
-            //'rolid_fk',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

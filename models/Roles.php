@@ -12,7 +12,7 @@ use Yii;
  * @property string $roldesc Descripción
  *
  * @property Rolinte[] $rolintes
- * @property Usuarios[] $usuarios
+ * @property Usuarol[] $usuarols
  */
 class Roles extends \yii\db\ActiveRecord
 {
@@ -59,8 +59,8 @@ class Roles extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsuarios()
+    public function getUsuarols()
     {
-        return $this->hasMany(Usuarios::className(), ['rolid_fk' => 'rolid']);
+        return $this->hasMany(Usuarol::className(), ['rolid_fk' => 'rolid']);
     }
 }

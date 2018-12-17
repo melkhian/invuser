@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Dependencias;
+use app\models\Usuarol;
 
 /**
- * DependenciasSearch represents the model behind the search form of `app\models\Dependencias`.
+ * UsuarolSearch represents the model behind the search form of `app\models\Usuarol`.
  */
-class DependenciasSearch extends Dependencias
+class UsuarolSearch extends Usuarol
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DependenciasSearch extends Dependencias
     public function rules()
     {
         return [
-            [['depid', 'tiposid_fk_1', 'tiposid_fk_2'], 'integer'],
-            [['depnomb', 'depenca', 'depteleenca', 'depdireenca', 'depcorrenca'], 'safe'],
+            [['usuarolid', 'usuaid_fk', 'rolid_fk'], 'integer'],
+            [['vence'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DependenciasSearch extends Dependencias
      */
     public function search($params)
     {
-        $query = Dependencias::find();
+        $query = Usuarol::find();
 
         // add conditions that should always apply here
 
@@ -59,16 +59,11 @@ class DependenciasSearch extends Dependencias
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'depid' => $this->depid,
-            'tiposid_fk_1' => $this->tiposid_fk_1,
-            'tiposid_fk_2' => $this->tiposid_fk_2,
+            'usuarolid' => $this->usuarolid,
+            'usuaid_fk' => $this->usuaid_fk,
+            'rolid_fk' => $this->rolid_fk,
+            'vence' => $this->vence,
         ]);
-
-        $query->andFilterWhere(['like', 'depnomb', $this->depnomb])
-            ->andFilterWhere(['like', 'depenca', $this->depenca])
-            ->andFilterWhere(['like', 'depteleenca', $this->depteleenca])
-            ->andFilterWhere(['like', 'depdireenca', $this->depdireenca])
-            ->andFilterWhere(['like', 'depcorrenca', $this->depcorrenca]);
 
         return $dataProvider;
     }

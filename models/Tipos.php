@@ -58,7 +58,7 @@ class Tipos extends \yii\db\ActiveRecord
      */
     public function getDependencias()
     {
-        return $this->hasMany(Dependencias::className(), ['tiposid_fk' => 'tiposid']);
+        return $this->hasMany(Dependencias::className(), ['tipoid_fk' => 'tiposid']);
     }
 
     /**
@@ -74,7 +74,7 @@ class Tipos extends \yii\db\ActiveRecord
      */
     public function getUsuarios()
     {
-        return $this->hasMany(Usuarios::className(), ['tiposid_fk_1' => 'tiposid']);
+        return $this->hasMany(Usuarios::className(), ['tipoid_fk_1' => 'tiposid']);
     }
 
     /**
@@ -82,6 +82,15 @@ class Tipos extends \yii\db\ActiveRecord
      */
     public function getUsuarios0()
     {
-        return $this->hasMany(Usuarios::className(), ['tiposid_fk_2' => 'tiposid']);
+        return $this->hasMany(Usuarios::className(), ['tipoid_fk_2' => 'tiposid']);
+    }
+
+//Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+        public function tipo()
+    {
+        $data = Tipo::findOne($this->tipoid_fk);
+
+        return $data['tipodesc'];
     }
 }

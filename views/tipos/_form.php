@@ -14,11 +14,7 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-	<?php 
-	    $consulta = Tipo::find()->asArray()->all();
-	    $listado=ArrayHelper::map($consulta,'tipoid','tipodesc');
-	    echo $form->field($model,"tipoid_fk")->dropDownList($listado,['prompt'=> 'Seleccione un Tipo']);
-    ?>
+    <?= $form->field($model, 'tipoid_fk')->dropDownList(ArrayHelper::map(Tipo::find()->all(),'tipoid','tipodesc'), ['prompt'=> 'Seleccione el Tipo']) ?>
 
     <?= $form->field($model, 'tiposdesc')->textInput(['maxlength' => true]) ?>
 

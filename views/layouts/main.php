@@ -39,7 +39,16 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Dependencias', 'url' => ['/dependencias/']],
             ['label' => 'Usuarios', 'url' => ['/usuarios/']],
+            ['label' => 'Usua Rol', 'url' => ['/usuarol/']],
+            ['label' => 'Roles', 'url' => ['/roles/']],
+            ['label' => 'Role Inte', 'url' => ['/rolinte/']],
+            ['label' => 'Inte Coma', 'url' => ['/intecoma/']],
+            ['label' => 'Interfaces', 'url' => ['/interfaces/']],
+            ['label' => 'Comandos', 'url' => ['/comandos/']],
+            ['label' => 'Tipos', 'url' => ['/tipos/']],
+            ['label' => 'Tipo', 'url' => ['/tipo/']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
